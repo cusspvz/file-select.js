@@ -37,25 +37,6 @@ async function uploadImages () {
 }
 ```
 
-
-### JS ES-stage-0 a.k.a. ES-awesome
-```js
-import req from './req'
-import fileSelect from 'file-select'
-
-async function uploadImages () {
-  try {
-    const images = await fileSelect({ maxFileSize: 1024 * 1024 * 10 })
-
-    const res = await req.post('/', { images })
-    alert( 'uploaded' )
-
-  } catch ( err ) {
-    alert( 'cancelled' )
-  }
-}
-```
-
 ### JS ES5 / CommonJS
 ```js
 var req = require( './req' )
