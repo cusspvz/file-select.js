@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '6'
+install:
+- npm install
+script:
+- npm run build
+- npm run browserify
+
+deploy:
+  provider: releases
+  api_key:
+    secure: 3LOh2w8WS60AeQKqAo+tFsRUutFHBK4lydjtYz3R6nWI++YOWNb7vfFOZSbLwN57UVptxpHnCKzbcx8SNrWIAROIxtQ1lTKWiXfxc3940SbnL0FjOoTdvweC1CDZR00lBkaJnueTmgMco7cRHp0lfsfbbamt6La+sgURECslQwka46fwXUAlGZqyiWfltyfsYUIkuLv0LBd+Mzo3n6BbhDYcpq9dOTkkVqlucyPQPwD5C+sjqcPl57izQTkqx4qBt339SUuSbG1Xf/kxD7CIAwJZUl1fjd+Yb5Z1kzLISCNW5vqKGraI0EgoJwmPU6kYDAyS1SR2KPzIMitzKerh7LG/9KhTEBcycKonGeiYFkNncyNmJcerUJRULnM0TdgXnY5+JCqfHzgf/TV+owPgLGq+nqamgkJtJi3WtSMR1pnce5z4OYbLu+0YNhhCkDbXRx6rSlxvEoja4ZWDbZODpsWwiFaH1NhfqBe9WS+ZKxNAMcMPeRmXMbLLRIAi3BKCuj5uCSByT1PvGDPLUy3Ep0yIwSo5NLYHCvPPdeGmsReb2Ui8B0+qvOfQNnr2juaRPcuFE2P2sMJeZfz10kg01+dVo8cJ5rpSpu67sSsCrhHc1YKs7QhTCBDBWXJn+ExNBOX2942MDBiN4QN/w63SdvnDR3JKv9cedD5IJf5VrEo=
+  file:
+    - dist/file-select.js
+    - dist/file-select.min.js
+  on:
+    tags: true

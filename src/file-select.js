@@ -14,7 +14,7 @@ export function fileSelect ( options ) {
   })
 
   function onChange ( e ) {
-    const filesSize = 0
+    let filesSize = 0
     const files = e.target.files
 
     for( file of files ) {
