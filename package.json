@@ -4,7 +4,9 @@
   "description": "prompt user for selecting files. +promises, -forms",
   "main": "lib/file-select.js",
   "scripts": {
-    "test": "nyc mocha"
+    "build": "rm -fR lib/; mkdir lib/; babel -d lib/ src/",
+    "browserify": "rm -fR dist/; mkdir dist/; browserify lib/file-select.js -o dist/file-select.js; uglifyjs dist/file-select.js > dist/file-select.min.js",
+    "test": "echo 'No test suite added yet!' && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,42 @@
     "user"
   ],
   "author": "José Moreira <josemoreiravarzim@gmail.com>",
-  "license": "ISC",
+  "license": "POL-1.0",
   "bugs": {
     "url": "https://github.com/cusspvz/file-select.js/issues"
   },
-  "homepage": "https://github.com/cusspvz/file-select.js#readme"
+  "homepage": "https://github.com/cusspvz/file-select.js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-plugin-istanbul": "^2.0.3",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "browserify": "^13.1.1",
+    "uglify-js": "^2.7.4"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "es2016",
+      "stage-0"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
 }
