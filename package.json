@@ -1,0 +1,28 @@
+{
+  "name": "file-select",
+  "version": "1.0.0",
+  "description": "prompt user for selecting files. more promises, less forms",
+  "main": "lib/file-select.js",
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cusspvz/file-select.js.git"
+  },
+  "keywords": [
+    "file",
+    "upload",
+    "browser",
+    "browserify",
+    "select",
+    "prompt",
+    "user"
+  ],
+  "author": "José Moreira <josemoreiravarzim@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cusspvz/file-select.js/issues"
+  },
+  "homepage": "https://github.com/cusspvz/file-select.js#readme"
+}
