@@ -1,7 +1,7 @@
 {
   "name": "file-select",
   "version": "1.0.0",
-  "description": "prompt user for selecting files. more promises, less forms",
+  "description": "prompt user for selecting files. +promises, -forms",
   "main": "lib/file-select.js",
   "scripts": {
     "test": "nyc mocha"
