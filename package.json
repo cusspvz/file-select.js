@@ -4,6 +4,7 @@
   "description": "prompt user for selecting files. +promises, -forms",
   "main": "lib/file-select.js",
   "scripts": {
+    "postversion": "git push origin --tags",
     "build": "rm -fR lib/; mkdir lib/; babel -d lib/ src/",
     "browserify": "rm -fR dist/; mkdir dist/; browserify lib/file-select.js -o dist/file-select.js; uglifyjs dist/file-select.js > dist/file-select.min.js",
     "test": "echo 'No test suite added yet!' && exit 1"
