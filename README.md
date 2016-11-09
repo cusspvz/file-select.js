@@ -21,14 +21,18 @@ npm i --save file-select
 
 ### JS ES-stage-0 a.k.a. ES-awesome
 ```js
-import req from './req'
+import req from 'superagent'
 import fileSelect from 'file-select'
 
 async function uploadImages () {
   try {
-    const images = await fileSelect({ maxFileSize: 1024 * 1024 * 10 })
+    const image = await fileSelect({
+      maxFileSize: 1024 * 1024 * 10,
+      multiple: false,
+      accept: 'image/*'
+    })
 
-    const res = await req.post('/', { images })
+    const res = await req.post('/').attach('image',image)
     alert( 'uploaded' )
 
   } catch ( err ) {
@@ -39,15 +43,19 @@ async function uploadImages () {
 
 ### JS ES5 / CommonJS
 ```js
-var req = require( './req' )
+var req = require( 'superagent' )
 var fileSelect = require( 'file-select' )
 
 function uploadImages () {
   return Promise.try(function () {
-    return fileSelect({ maxFileSize: 1024 * 1024 * 10 })
+    return fileSelect({
+      maxFileSize: 1024 * 1024 * 10,
+      multiple: false,
+      accept: 'image/*'
+    })
   })
   .then(function ( images ) {
-    return req.post('/', { images })
+    return req.post('/').attach('image',image)
   })
   .then(function ( res ) {
     alert( 'uploaded' )
@@ -75,6 +83,16 @@ Allows multiple files selection.
 `Number`
 Limits select size PER FILE.
 
+#### `options.accept`
+`String | false`
+String with mime types and file extensions separated by commas.
+
+Examples:
+- `.jpg,.jpeg`
+- `image/jpeg,.jpeg,.jpg`
+- `image/jpeg`
+- `.pdf`
+- `.mp3`
 
 ## LICENSE - POL-v1
 
