@@ -1,6 +1,6 @@
 {
   "name": "file-select",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "prompt user for selecting files. +promises, -forms",
   "main": "lib/file-select.js",
   "scripts": {
