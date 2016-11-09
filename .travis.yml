@@ -8,7 +8,14 @@ script:
 - npm run browserify
 
 deploy:
-  provider: releases
+- provider: npm
+  email: josemoreiravarzim@gmail.com
+  api_key:
+    secure: OP6ZXe3I/WPvhYiAyRABJ2BjQfipWrhFLOxIevRr7o1pwy3eza5JettOfLrcj7ONPPtMhSoeIsNLhrTLq7XW+r9Z4P7zfTU+kn2To+fKtnmt7Q4LQL54a3zO/MVKhO0T/Wk+pANAlo7XkkJFyN3OAnrByevNVaTm68z941bnbBQvuHgZyaeGS6r1PQ0SDRi755o/kiH87d4gUzkDw+63YgcNOqU8ZE4NCqCASaKRhbThiny8hI0frMKcCv1LE/yHfB+Z9DIk4h8j45oTTHAFgAp2O/2ubXUQ6ZKzUj/i6Lrz7x91VnMHP8gKd5+xmsQA8i3qZ3F20iBBu6AcYePbKkCDMAIVyL/QU8qSnbD6FWdNdZq2MDzcrbJyPUUUGTFbP98iBIHVtZisfGE4fSuNu05dW+ZJkhjpdPVrfeMFuEfj1kJ9FFpXmi2lSMpkGNoAVGLdFAbncisTqdGf+XneSI1yjhH8YOZb3XMqLPDeyl4m6O/vnlMvD3zw8EUnyn2d4y2BKZD3JhdmztwSAjyz6X1wtet3gRwYWCvuMK6jnuVincUHYPQmtFfKazRTjbIZGZu3eEd9+Fa+afe6aKErfaWiDpwU8gaXNp7JBC2pkkqMuR8a7+Z4fBfTH53hgeuLSBdNZGWGrzSfwr6JHxn7W2oC3e5tWYBHGfccHx0ejbg=
+  on:
+    tags: true
+    repo: cusspvz/file-select.js
+- provider: releases
   api_key:
     secure: 3LOh2w8WS60AeQKqAo+tFsRUutFHBK4lydjtYz3R6nWI++YOWNb7vfFOZSbLwN57UVptxpHnCKzbcx8SNrWIAROIxtQ1lTKWiXfxc3940SbnL0FjOoTdvweC1CDZR00lBkaJnueTmgMco7cRHp0lfsfbbamt6La+sgURECslQwka46fwXUAlGZqyiWfltyfsYUIkuLv0LBd+Mzo3n6BbhDYcpq9dOTkkVqlucyPQPwD5C+sjqcPl57izQTkqx4qBt339SUuSbG1Xf/kxD7CIAwJZUl1fjd+Yb5Z1kzLISCNW5vqKGraI0EgoJwmPU6kYDAyS1SR2KPzIMitzKerh7LG/9KhTEBcycKonGeiYFkNncyNmJcerUJRULnM0TdgXnY5+JCqfHzgf/TV+owPgLGq+nqamgkJtJi3WtSMR1pnce5z4OYbLu+0YNhhCkDbXRx6rSlxvEoja4ZWDbZODpsWwiFaH1NhfqBe9WS+ZKxNAMcMPeRmXMbLLRIAi3BKCuj5uCSByT1PvGDPLUy3Ep0yIwSo5NLYHCvPPdeGmsReb2Ui8B0+qvOfQNnr2juaRPcuFE2P2sMJeZfz10kg01+dVo8cJ5rpSpu67sSsCrhHc1YKs7QhTCBDBWXJn+ExNBOX2942MDBiN4QN/w63SdvnDR3JKv9cedD5IJf5VrEo=
   file:
@@ -16,3 +23,4 @@ deploy:
     - dist/file-select.min.js
   on:
     tags: true
+    repo: cusspvz/file-select.js

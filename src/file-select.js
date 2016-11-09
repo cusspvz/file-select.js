@@ -1,59 +1,71 @@
 const DEFAULT_OPTIONS = {
   multiple: false,
+  accept: false,
   maxFileSize: 20971520, // 20 Mb
   maxFilesSize: 20971520, // 20 Mb
 }
 
 export function fileSelect ( options ) {
-  options = Object.assign({}, DEFAULT_OPTIONS, options)
+  return new Promise(function (ful, rej) {
 
-  let fulfill, reject
-  const promise = new Promise(function (ful, rej) {
-    fulfill = ful
-    reject = rej
-  })
+    options = Object.assign({}, DEFAULT_OPTIONS, options)
 
-  function onChange ( e ) {
-    let filesSize = 0
-    const files = e.target.files
+    let input = document.createElement('input')
+    input.style.cssText = 'position:absolute;left:0;top:-999em;'
+    input.type = 'file'
+    input.multiple = options.multiple
 
-    for( file of files ) {
-      if ( typeof file.size !== 'undefined' ) {
-        filesSize += file.size
+    if ( options.accept ) {
+      input.accept = options.accept
+    }
 
-        if ( file.size > options.maxFileSize ) {
-          alert( `${file.name} is too big, please select another` )
+    function done ( err, value ) {
+      input.remove()
 
-          if ( process.env.NODE_ENV === 'development' ) {
-            console.warn(
-              "If you need to select larger files," +
-              " please change options.maxFileSize"
-            )
+      if ( err ) {
+        return rej( err )
+      }
+      ful( value )
+    }
+
+    function onChange ( e ) {
+      let filesSize = 0
+      const files = e.target.files
+
+      for( let file of files ) {
+        if ( typeof file.size !== 'undefined' ) {
+          filesSize += file.size
+
+          if ( file.size > options.maxFileSize ) {
+            alert( `${file.name} is too big, please select another` )
+
+            if ( process.env.NODE_ENV === 'development' ) {
+              console.warn(
+                "If you need to select larger files," +
+                " please change options.maxFileSize"
+              )
+            }
+            return done( null, [] )
           }
-          return
         }
+
       }
 
+      if ( filesSize > options.maxFilesSize ) {
+        alert( `You've reached the maximum selected files size, please select less or smaller files` )
+        return done( null, [] )
+      }
+
+      done( null, options.multiple ? files : files[0] )
     }
 
-    if ( filesSize > maxFilesSize ) {
-      alert( `You've reached the maximum selected files size, please select less or smaller files` )
-      return
-    }
+    input.addEventListener('change', onChange)
+    addEventListener('focus', () => setTimeout(reject, 1000) )
+    input.click()
 
-    fulfill( options.multiple ? files : files[0] )
-  }
+    document.body.appendChild(input)
 
-  let input = document.createElement('input')
-	input.style.cssText = 'position:absolute;left:0;top:-999em;'
-	input.type = 'file'
-	input.multiple = options.multiple
-
-  input.addEventListener('change', onChange)
-	addEventListener('focus', () => setTimeout(reject, 1000) )
-	input.click()
-
-  document.body.appendChild(input)
-
-  return promise
+  })
 }
+
+export default fileSelect
