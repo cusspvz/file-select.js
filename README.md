@@ -19,6 +19,21 @@ npm i --save file-select
 
 ## Usage
 
+### Using a standalone release build
+
+**HINT:** Check out newest releases [here](https://github.com/cusspvz/file-select.js/releases)!
+
+```html
+<script type="text/javascript" src="/path/to/file-select.min.js"></script>
+<script type="text/javascript">
+
+  window.onload = function () {
+    fileSelect().then(console.log.bind(console))
+  }
+
+</script>
+```
+
 ### JS ES-stage-0 a.k.a. ES-awesome
 ```js
 import req from 'superagent'

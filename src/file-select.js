@@ -5,7 +5,7 @@ const DEFAULT_OPTIONS = {
   maxFilesSize: 20971520, // 20 Mb
 }
 
-export function fileSelect ( options ) {
+function fileSelect ( options ) {
   return new Promise(function (ful, rej) {
 
     options = Object.assign({}, DEFAULT_OPTIONS, options)
@@ -68,4 +68,4 @@ export function fileSelect ( options ) {
   })
 }
 
-export default fileSelect
+module.exports = fileSelect
