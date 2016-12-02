@@ -60,7 +60,7 @@ function fileSelect ( options ) {
     }
 
     input.addEventListener('change', onChange)
-    addEventListener('focus', () => setTimeout(reject, 1000) )
+    addEventListener('focus', () => setTimeout(done, 1000) )
     input.click()
 
     document.body.appendChild(input)
